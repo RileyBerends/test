@@ -4,26 +4,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fafaf8">
+  <meta name="description" content="Riley Berends — Mechatronica">
   <title>Riley Berends</title>
 
   <style>
+    :root {
+      --background: #fafaf8;
+      --text: #202020;
+      --muted: #777777;
+      --border: #e7e7e3;
+      --blue: #5576dc;
+    }
+
     * {
       box-sizing: border-box;
     }
 
-    html, body {
-      margin: 0;
+    html {
       min-height: 100%;
     }
 
     body {
+      margin: 0;
       min-height: 100vh;
       min-height: 100dvh;
-      background: #fafaf8;
-      color: #202020;
-      font-family: Arial, Helvetica, sans-serif;
       display: flex;
       flex-direction: column;
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
     main {
@@ -32,19 +43,27 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 64px 24px 48px;
       text-align: center;
-      padding: 40px 24px;
-      animation: verschijnen 1s ease both;
     }
 
+    .intro {
+      width: 100%;
+      max-width: 700px;
+      animation: verschijnen 0.9s ease both;
+    }
+
+    /* Naam */
     h1 {
       margin: 0;
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-size: clamp(2.6rem, 8vw, 4.8rem);
       font-weight: 700;
       letter-spacing: -0.055em;
       line-height: 1.3;
+      white-space: nowrap;
     }
 
+    /* De i met het bewegende smileytje */
     .letter-i {
       position: relative;
       display: inline-block;
@@ -58,21 +77,20 @@
       position: absolute;
       bottom: 0.035em;
       left: 50%;
-      transform: translateX(-50%);
       width: 0.125em;
       height: 0.53em;
+      transform: translateX(-50%);
       background: currentColor;
       border-radius: 0.015em;
     }
 
     .smiley {
       position: absolute;
+      top: -0.035em;
+      left: 50%;
       width: 0.23em;
       height: 0.23em;
-      left: 50%;
-      top: -0.035em;
-      transform: translateX(-50%);
-      background: #5576dc;
+      background: var(--blue);
       border-radius: 50%;
       animation: zweven 2.5s ease-in-out infinite;
     }
@@ -81,9 +99,9 @@
     .smiley::after {
       content: "";
       position: absolute;
+      top: 30%;
       width: 12%;
       height: 12%;
-      top: 30%;
       background: white;
       border-radius: 50%;
     }
@@ -98,70 +116,113 @@
 
     .mond {
       position: absolute;
-      left: 30%;
       top: 43%;
+      left: 30%;
       width: 40%;
       height: 27%;
       border-bottom: 1.5px solid white;
       border-radius: 0 0 50% 50%;
     }
 
+    /* Bio en Achterhoekse vlag */
+    .details {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 11px;
+      margin-top: 10px;
+    }
+
     .bio {
-      margin: 12px 0 32px;
-      color: #777;
-      font-size: 1.1rem;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .achterhoek-vlag {
+      display: block;
+      width: 30px;
+      height: 20px;
+      object-fit: cover;
+      border-radius: 3px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.06);
+      transition: transform 0.25s ease;
+    }
+
+    .achterhoek-vlag:hover {
+      transform: rotate(-5deg) scale(1.1);
+    }
+
+    /* LinkedIn-knop */
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 34px;
     }
 
     .linkedin {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
-      padding: 13px 24px;
-      border: 1px solid #dededb;
+      min-height: 48px;
+      padding: 12px 23px;
+      border: 1px solid var(--border);
       border-radius: 100px;
-      background: white;
-      color: #202020;
-      text-decoration: none;
+      background: #ffffff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
       font-weight: 500;
-      transition: transform .25s ease,
-                  box-shadow .25s ease;
+      text-decoration: none;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
     }
 
     .linkedin:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+      transform: translateY(-3px);
+      border-color: #d7d7d2;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+    }
+
+    .linkedin:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 4px;
     }
 
     .linkedin svg {
-      width: 20px;
-      height: 20px;
+      width: 19px;
+      height: 19px;
       fill: #0a66c2;
     }
 
+    .arrow {
+      color: #888;
+      font-size: 1rem;
+    }
+
+    /* Copyright-footer */
     footer {
       width: 100%;
-      padding: 20px 16px 24px;
+      padding: 18px 20px 26px;
       text-align: center;
-      color: #888;
+      color: #999;
       font-size: 12px;
       line-height: 1.6;
+      letter-spacing: 0.01em;
     }
 
-    footer a {
-      color: #22a35a;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
+    /* Animaties */
     @keyframes verschijnen {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(18px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -172,57 +233,109 @@
       0%, 100% {
         transform: translate(-50%, 0);
       }
+
       50% {
         transform: translate(-50%, -0.045em);
       }
     }
 
+    /* Mobiele schermen */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: clamp(2rem, 9vw, 3rem);
+      }
+
+      .details {
+        margin-top: 12px;
+      }
+
+      .bio {
+        font-size: 1rem;
+      }
+
+      .achterhoek-vlag {
+        width: 28px;
+        height: 19px;
+      }
+
+      .actions {
+        margin-top: 30px;
+      }
+
+      footer {
+        padding-bottom: 22px;
+      }
+    }
+
+    /* Minder animatie indien gewenst */
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         animation: none !important;
         transition: none !important;
+      }
+
+      .smiley {
+        transform: translateX(-50%);
       }
     }
   </style>
 </head>
 
 <body>
+
   <main>
-    <h1>
-      R<span class="letter-i" role="img" aria-label="i met smiley"><span class="smiley"><span class="mond"></span></span></span>ley Berends
-    </h1>
+    <div class="intro">
 
-    <p class="bio">Mechatronica</p>
+      <h1 aria-label="Riley Berends">
+        R<span class="letter-i" aria-hidden="true"><span class="smiley"><span class="mond"></span></span></span>ley Berends
+      </h1>
 
-    <a
-      class="linkedin"
-      href="https://nl.linkedin.com/in/riley-berends-070a61213"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M20.447 20.452h-3.554v-5.569
-        c0-1.328-.027-3.037-1.852-3.037
-        -1.853 0-2.136 1.445-2.136 2.939
-        v5.667H9.35V9h3.414v1.561h.049
-        c.476-.9 1.637-1.85 3.37-1.85
-        3.601 0 4.267 2.37 4.267 5.455
-        v6.286zM5.337 7.433a2.062 2.062
-        0 1 1 0-4.124 2.062 2.062 0 0 1
-        0 4.124zM7.119 20.452H3.555V9
-        h3.564v11.452z"/>
-      </svg>
-      LinkedIn ↗
-    </a>
+      <div class="details">
+        <p class="bio">Mechatronica</p>
+
+        <img
+          src="/achterhoek.png"
+          alt="Achterhoekse vlag"
+          class="achterhoek-vlag"
+          width="30"
+          height="20"
+        >
+      </div>
+
+      <div class="actions">
+        <a
+          class="linkedin"
+          href="https://nl.linkedin.com/in/riley-berends-070a61213"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Bekijk mijn LinkedIn-profiel"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569
+            c0-1.328-.027-3.037-1.852-3.037
+            -1.853 0-2.136 1.445-2.136 2.939
+            v5.667H9.35V9h3.414v1.561h.049
+            c.476-.9 1.637-1.85 3.37-1.85
+            3.601 0 4.267 2.37 4.267 5.455
+            v6.286zM5.337 7.433a2.062 2.062
+            0 1 1 0-4.124 2.062 2.062 0 0 1
+            0 4.124zM7.119 20.452H3.555V9
+            h3.564v11.452z"/>
+          </svg>
+
+          <span>LinkedIn</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+    </div>
   </main>
 
   <footer>
-    © 2026 Riley Berends ~ Gemaakt met heel veel schik en
-    <a
-      href="https://www.grolsch.nl/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >bier</a>
+    © 2026 Riley Berends · Gemaakt met heel veel schik.
   </footer>
+
 </body>
 </html>
