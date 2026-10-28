@@ -3,9 +3,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Riley Berends</title>
 
   <style>
@@ -13,34 +11,40 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
       margin: 0;
+      min-height: 100%;
+    }
+
+    body {
       min-height: 100vh;
       min-height: 100dvh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       background: #fafaf8;
       color: #202020;
-      font-family: -apple-system, BlinkMacSystemFont,
-                   "Segoe UI", sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      flex-direction: column;
     }
 
     main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 24px;
+      padding: 40px 24px;
       animation: verschijnen 1s ease both;
     }
 
     h1 {
+      margin: 0;
       font-size: clamp(2.5rem, 8vw, 4.5rem);
       font-weight: 700;
       letter-spacing: -0.055em;
-      margin: 0;
       line-height: 1.3;
     }
 
-    /* De i zonder normaal puntje */
     .letter-i {
       position: relative;
       display: inline-block;
@@ -61,7 +65,6 @@
       border-radius: 0.015em;
     }
 
-    /* Smiley als puntje van de i */
     .smiley {
       position: absolute;
       width: 0.23em;
@@ -78,11 +81,11 @@
     .smiley::after {
       content: "";
       position: absolute;
-      background: white;
       width: 12%;
       height: 12%;
-      border-radius: 50%;
       top: 30%;
+      background: white;
+      border-radius: 50%;
     }
 
     .smiley::before {
@@ -104,9 +107,9 @@
     }
 
     .bio {
+      margin: 12px 0 32px;
       color: #777;
       font-size: 1.1rem;
-      margin: 12px 0 32px;
     }
 
     .linkedin {
@@ -120,19 +123,38 @@
       color: #202020;
       text-decoration: none;
       font-weight: 500;
-      transition: transform 0.25s ease,
-                  box-shadow 0.25s ease;
+      transition: transform .25s ease,
+                  box-shadow .25s ease;
     }
 
     .linkedin:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
     }
 
     .linkedin svg {
       width: 20px;
       height: 20px;
       fill: #0a66c2;
+    }
+
+    footer {
+      width: 100%;
+      padding: 20px 16px 24px;
+      text-align: center;
+      color: #888;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    footer a {
+      color: #22a35a;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
 
     @keyframes verschijnen {
@@ -165,26 +187,20 @@
 </head>
 
 <body>
-
   <main>
     <h1>
-      R<span class="letter-i" role="img"
-        aria-label="i met smiley">
-        <span class="smiley">
-          <span class="mond"></span>
-        </span>
-      </span>ley Berends
+      R<span class="letter-i" role="img" aria-label="i met smiley"><span class="smiley"><span class="mond"></span></span></span>ley Berends
     </h1>
 
     <p class="bio">Mechatronica</p>
 
-    <a class="linkedin"
-       href="https://nl.linkedin.com/in/riley-berends-070a61213"
-       target="_blank"
-       rel="noopener noreferrer">
-
-      <svg viewBox="0 0 24 24"
-           aria-hidden="true">
+    <a
+      class="linkedin"
+      href="https://nl.linkedin.com/in/riley-berends-070a61213"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M20.447 20.452h-3.554v-5.569
         c0-1.328-.027-3.037-1.852-3.037
         -1.853 0-2.136 1.445-2.136 2.939
@@ -196,10 +212,17 @@
         0 4.124zM7.119 20.452H3.555V9
         h3.564v11.452z"/>
       </svg>
-
       LinkedIn ↗
     </a>
   </main>
 
+  <footer>
+    © 2026 Riley Berends ~ Gemaakt met heel veel schik en
+    <a
+      href="https://www.grolsch.nl/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >bier</a>
+  </footer>
 </body>
 </html>
