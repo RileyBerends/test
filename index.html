@@ -28,6 +28,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      min-height: 100%;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -54,6 +58,7 @@
       animation: verschijnen 0.9s ease both;
     }
 
+    /* Naam */
     h1 {
       margin: 0;
       font-size: clamp(2.2rem, 7vw, 4.4rem);
@@ -64,24 +69,12 @@
     }
 
     /*
-      De letter i blijft een echte letter.
-      Het blauwe smileytje bedekt het puntje.
+      Echte puntloze i uit het lettertype.
+      Het smileytje is het enige puntje.
     */
     .letter-i {
       position: relative;
       display: inline-block;
-    }
-
-    .letter-i::before {
-      content: "";
-      position: absolute;
-      z-index: 1;
-      top: 0.12em;
-      left: 50%;
-      width: 0.28em;
-      height: 0.20em;
-      transform: translateX(-50%);
-      background: var(--background);
     }
 
     .smiley {
@@ -125,6 +118,7 @@
       border-radius: 0 0 50% 50%;
     }
 
+    /* Bio */
     .bio {
       margin: 12px 0 0;
       color: var(--muted);
@@ -132,6 +126,7 @@
       font-weight: 400;
     }
 
+    /* LinkedIn */
     .actions {
       display: flex;
       justify-content: center;
@@ -180,6 +175,7 @@
       color: #888;
     }
 
+    /* Footer */
     footer {
       width: 100%;
       padding: 18px 20px 26px;
@@ -189,6 +185,7 @@
       line-height: 1.6;
     }
 
+    /* Animaties */
     @keyframes verschijnen {
       from {
         opacity: 0;
@@ -211,6 +208,7 @@
       }
     }
 
+    /* Mobiel */
     @media (max-width: 480px) {
       h1 {
         font-size: clamp(1.9rem, 8.7vw, 3rem);
@@ -225,6 +223,7 @@
       }
     }
 
+    /* Toegankelijkheid */
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
@@ -245,7 +244,7 @@
     <div class="intro">
 
       <h1 aria-label="Riley Berends">
-        R<span class="letter-i" aria-hidden="true">i<span class="smiley"><span class="mond"></span></span></span>ley Berends
+        R<span class="letter-i" aria-hidden="true">ı<span class="smiley"><span class="mond"></span></span></span>ley Berends
       </h1>
 
       <p class="bio">Mechatronica</p>
